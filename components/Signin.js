@@ -13,10 +13,10 @@ function Signin() {
         margin: '0 auto',
       }}
     >
-      <h1>Hi there!</h1>
-      <p>Click the button below to login!</p>
+      <h3>Get Ready To</h3>
+      <h1>Sweat</h1>
       <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
-        Sign In
+        Login
       </Button>
     </div>
   );
