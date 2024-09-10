@@ -2,8 +2,8 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-const getProfile = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/profile.json?orderBy="uid"&equalTo="${uid}"`, {
+const getUser = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/user.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -14,8 +14,8 @@ const getProfile = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const createProfile = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/profile.json`, {
+const createUser = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/user.json`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -27,8 +27,8 @@ const createProfile = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateProfile = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/profile/${payload.firebaseKey}.json`, {
+const updateUser = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/user/${payload.id}.json`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -40,4 +40,21 @@ const updateProfile = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getProfile, createProfile, updateProfile };
+const getSingleUser = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/user/${id}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+export {
+  getUser,
+  createUser,
+  updateUser,
+  getSingleUser,
+};
