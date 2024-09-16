@@ -1,22 +1,19 @@
-import { useAuth } from '../utils/context/authContext';
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
-function Home() {
-  const { user } = useAuth();
+const PlaceholderPage = () => (
+  <Container
+    className="text-center"
+    style={{
+      height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
+    }}
+  >
+    <Row>
+      <Col>
+        <h1>Workout Page</h1>
+      </Col>
+    </Row>
+  </Container>
+);
 
-  return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Hello {user.displayName}!</h1>
-      <button type="button">Start Workout</button>
-    </div>
-  );
-}
-
-export default Home;
+export default PlaceholderPage;
