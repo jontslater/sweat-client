@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
@@ -14,7 +16,9 @@ function Home() {
       }}
     >
       <h1>Hello {user.displayName}!</h1>
-      <button type="button">Start Workout</button>
+      <Link href="workoutPage" passHref>
+        <Button>Start Workout</Button>
+      </Link>
     </div>
   );
 }
