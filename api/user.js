@@ -22,7 +22,7 @@ const getUser = (id) => new Promise((resolve, reject) => {
 });
 
 const getUserByUid = (uid) => new Promise((resolve, reject) => {
-  fetch(`${baseURL}/users?uid=${uid}`, {
+  fetch(`${baseURL}/users/${uid}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

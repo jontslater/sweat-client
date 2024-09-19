@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
@@ -18,12 +19,13 @@ export default function Profile() {
     getUser(user.uid).then(setUserDetails);
     getProfile(user.id).then((profileData) => {
       setProfileDetails(profileData);
-      setMetricsExist(!!profileData.age); // Update this based on actual metrics data structure
+      setMetricsExist(!!profileData.age);
     });
   };
 
   useEffect(() => {
     getAllUsers();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const handleAddUserClick = () => {

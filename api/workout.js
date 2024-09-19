@@ -1,14 +1,26 @@
 import { clientCredentials } from '../utils/client';
 
 const getSingleWorkout = (id) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/workouts/${id}.json`)
+  fetch(`${clientCredentials.databaseURL}/workouts/${id}`)
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+const getAllWorkouts = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/workouts?users=${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
     .then((response) => response.json())
     .then(resolve)
     .catch(reject);
 });
 
 const createWorkout = (payload) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/workouts.json`, {
+  fetch(`${clientCredentials.databaseURL}/workouts`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -21,7 +33,7 @@ const createWorkout = (payload) => new Promise((resolve, reject) => {
 });
 
 const updateWorkout = (payload) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/workouts/${payload.id}.json`, {
+  fetch(`${clientCredentials.databaseURL}/workouts/${payload.id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -34,7 +46,7 @@ const updateWorkout = (payload) => new Promise((resolve, reject) => {
 });
 
 const deleteWorkout = (id) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/workouts/${id}.json`, {
+  fetch(`${clientCredentials.databaseURL}/workouts/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -49,4 +61,5 @@ export {
   createWorkout,
   updateWorkout,
   deleteWorkout,
+  getAllWorkouts,
 };
