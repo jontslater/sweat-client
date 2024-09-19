@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router'; // Import useRouter
 import { createWorkout } from '../api/workout';
-import { getAllWorkoutTypes } from '../api/workoutType';
 import { getUserByUid } from '../api/user';
+import { getAllTypes } from '../api/type';
 
 const WorkoutForm = ({ user }) => {
   const [time, setTime] = useState(0);
@@ -18,7 +18,7 @@ const WorkoutForm = ({ user }) => {
   const router = useRouter(); // Initialize useRouter
 
   useEffect(() => {
-    getAllWorkoutTypes().then(setWorkoutTypes).catch((error) => console.error(error));
+    getAllTypes().then(setWorkoutTypes);
 
     getUserByUid(user.uid)
       .then((fetchedUser) => {
@@ -59,6 +59,7 @@ const WorkoutForm = ({ user }) => {
       workout_type: parseInt(workoutType, 10),
       reflections: [],
     };
+    console.log(workoutData);
 
     createWorkout(workoutData)
       .then(() => {
@@ -109,7 +110,7 @@ const WorkoutForm = ({ user }) => {
             <option value="">Select a workout type</option>
             {workoutTypes.map((type) => (
               <option key={type.id} value={type.id}>
-                {type.type.type_name}
+                {type.type_name}
               </option>
             ))}
           </select>
