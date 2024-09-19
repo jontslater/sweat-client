@@ -7,18 +7,6 @@ const getSingleReflection = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// const getAllReflections = (id) => new Promise((resolve, reject) => {
-//   fetch(`${clientCredentials.databaseURL}/reflections/${id}`, {
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   })
-//     .then((response) => response.json())
-//     .then(resolve)
-//     .catch(reject);
-// });
-
 const deleteSingleReflection = (id) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/reflections/${id}`, {
     method: 'DELETE',

@@ -30,6 +30,7 @@ const registerUser = (userInfo) => new Promise((resolve, reject) => {
     .then((resp) => resolve(resp.json()))
     .catch(reject);
 });
+
 const signIn = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider);
